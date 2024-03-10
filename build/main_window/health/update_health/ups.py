@@ -8,7 +8,7 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Frame, StringVar, Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
-import controller as db_controller
+import controller1 as db_controller
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"./assets")
@@ -303,18 +303,19 @@ class UpdateHealth(Frame):
         print("Debug: self.rooms_data =", self.rooms_data)      
 
         # Filter out all reservations for selected id reservation
-        self.selected_rooms_data = list(
-            filter(lambda x: str(x[0]) == self.selected_r_id, self.rooms_data)
-        )
+        if self.rooms_data is not None:
+            self.selected_rooms_data = list(
+                filter(lambda x: str(x[0]) == self.selected_r_id, self.rooms_data)
+            )
 
-        if self.selected_rooms_data:
-            self.selected_rooms_data = self.selected_rooms_data[0]
+            if self.selected_rooms_data:
+                self.selected_rooms_data = self.selected_rooms_data[0]
 
-            self.canvas.itemconfigure(self.id_text, text=self.selected_rooms_data[0])
-            self.data["event"].set(self.selected_rooms_data[1])
-            self.data["w_event"].set(self.selected_rooms_data[2])
-            self.data["DT_heal"].set(self.selected_rooms_data[3])
-            self.data["meds"].set(self.selected_rooms_data[4])
+                self.canvas.itemconfigure(self.id_text, text=self.selected_rooms_data[0])
+                self.data["event"].set(self.selected_rooms_data[1])
+                self.data["w_event"].set(self.selected_rooms_data[2])
+                self.data["DT_heal"].set(self.selected_rooms_data[3])
+                self.data["meds"].set(self.selected_rooms_data[4])
 
      def handle_update(self):
         result = db_controller.update_health(

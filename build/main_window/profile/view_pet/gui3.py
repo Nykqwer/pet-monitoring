@@ -11,7 +11,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Frame, Label, Tk, Canvas, Entry, Text, Button, PhotoImage
 from PIL import Image, ImageTk,ImageFile,ImageDraw
-import controller as db_controller
+import controller1 as db_controller
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"./assets")

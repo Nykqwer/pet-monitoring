@@ -34,10 +34,7 @@ try:
             return False
         
         return cursor.fetchone()
-    
-    
-    
-    
+
     
     # Add a pet_info
     def add_petInfo(name, breed, age, weight, h_con, encoded_image):
@@ -73,16 +70,23 @@ try:
                 # Return False indicating failure
                 return False
 
-        # Get a activity
     def get_activity():
+        try:
             cmd = "SELECT id, type_act, duration, DT_act, note FROM activity;"
             cursor.execute(cmd)
-            if cursor.rowcount == 0:
+
+            # Fetch the results
+            result = cursor.fetchall()
+
+            # Check if the result is empty
+            if not result:
                 return False
-            
-            return cursor.fetchall()
-        
-        
+
+            return result
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+                    
     #def update_activity(id,type_act, duration, DT_act, note):
       #  cmd = f"update activity set type_act = '{type_act}',duration= {duration}, room_no = {DT_act}, note = {note} WHERE id = '{id};"
        # cursor.execute(cmd)
@@ -123,14 +127,22 @@ try:
             return False
         
 
-        # Get a health
+        # Get health data
     def get_health():
+        try:
             cmd = "SELECT id, event, w_event, DT_heal, medication FROM health;"
             cursor.execute(cmd)
-            if cursor.rowcount == 0:
+
+            # Fetch the results
+            result = cursor.fetchall()
+
+            if not result:  # If the result is an empty list, there are no rows
                 return False
-            
-            return cursor.fetchall()
+
+            return result
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
         
     def delete_health(id):
         cmd = "DELETE FROM health WHERE id = %s;"

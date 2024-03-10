@@ -9,7 +9,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Frame, Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
 from tkinter.ttk import Treeview
-import controller as db_controller
+import controller1 as db_controller
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"./assets")
@@ -209,7 +209,7 @@ class ViewHealth(Frame):
     def handle_refresh(self):
         self.treeview.delete(*self.treeview.get_children())
         self.heal_data = db_controller.get_health()
-    
+        print("health_refresh: ",self.heal_data)
         for row in self.heal_data:
                 self.treeview.insert("", "end", values=row)
                 

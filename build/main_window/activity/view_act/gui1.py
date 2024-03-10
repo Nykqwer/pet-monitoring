@@ -8,7 +8,7 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Frame, Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
-import controller as db_controller
+import controller1 as db_controller
 from tkinter.ttk import Treeview
 
 OUTPUT_PATH = Path(__file__).parent
@@ -194,6 +194,7 @@ class ViewActivity(Frame):
     def handle_refresh(self):
         self.treeview.delete(*self.treeview.get_children())
         self.act_data1 = db_controller.get_activity()
+        print("gui1",self.act_data1)
         for row in self.act_data1:
                 self.treeview.insert("", "end", values=row)
             

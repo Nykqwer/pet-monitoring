@@ -7,7 +7,7 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Frame, Label, StringVar, Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
-import controller as db_controller
+import controller1 as db_controller
 from PIL import Image, ImageTk, ImageDraw
 import base64
 import tkinter as tk
